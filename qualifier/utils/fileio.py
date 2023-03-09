@@ -7,7 +7,31 @@ This contains a helper function for loading and saving CSV files.
 import csv
 
 
+def save_csv(csvpath, data_set):
+
+ 
+    """Writes the CSV file from path provided.
+
+    Args:
+        csvpath (Path): The csv file path,  List of lists to write
+
+   
+    """
+    with open(csvpath, 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+
+
+        file_header = ["Lender","Max Loan Amount","Max LTV","Max DTI","Min Credit Score","Interest Rate"]
+        # write header
+        csvwriter.writerow( file_header )
+        
+        for loan in data_set:
+          csvwriter.writerow( loan)
+
+
 def load_csv(csvpath):
+
+    
     """Reads the CSV file from path provided.
 
     Args:

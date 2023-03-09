@@ -12,6 +12,7 @@ import questionary
 from pathlib import Path
 
 from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import save_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -46,11 +47,11 @@ def get_applicant_info():
         Returns the applicant's financial information.
     """
 
-    credit_score = questionary.text("What's your credit score?").ask()
-    debt = questionary.text("What's your current amount of monthly debt?").ask()
-    income = questionary.text("What's your total monthly income?").ask()
-    loan_amount = questionary.text("What's your desired loan amount?").ask()
-    home_value = questionary.text("What's your home value?").ask()
+    credit_score = questionary.text("What's your credit score?", validate=lambda text: True if text.isnumeric() else False).ask()
+    debt = questionary.text("What's your current amount of monthly debt?",validate=lambda text: True if text.isnumeric() else False).ask()
+    income = questionary.text("What's your total monthly income?", validate=lambda text: True if text.isnumeric() else False).ask()
+    loan_amount = questionary.text("What's your desired loan amount?",validate=lambda text: True if text.isnumeric() else False).ask()
+    home_value = questionary.text("What's your home value?",validate=lambda text: True if text.isnumeric() else False).ask()
 
     credit_score = int(credit_score)
     debt = float(debt)
@@ -102,14 +103,45 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
     return bank_data_filtered
 
 
+def ask_yes_no_question(question_text):
+    
+    valid_answers = ["Y","y", "N", "n","Yes","No"]
+    
+    answer = questionary.text(question_text,validate=lambda text: True if text in valid_answers else False).ask()
+    if( answer == "Y" or answer == "y" ):
+        return True
+    else:
+        return False
+
+
+
+
+
+
 def save_qualifying_loans(qualifying_loans):
     """Saves the qualifying loans to a CSV file.
 
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
     """
+
+    if(qualifying_loans==[]):
+        print("NO qualifying loans found. Program terminating")
+        return
+   
+
+    if(ask_yes_no_question(f"\nThere were {len(qualifying_loans)} found. Do you want to save them to a CSV file? (Y/N)""}")):
+        savepath = questionary.text("Please enter the the desired output file name: ", validate=lambda text: True if text.endswith(".csv") else False).ask()
+        save_csv(savepath, qualifying_loans)
+        #print(qualifying_loans)
+        return
+    
+    
+
+
     # @TODO: Complete the usability dialog for savings the CSV Files.
     # YOUR CODE HERE!
+
 
 
 def run():
