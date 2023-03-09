@@ -103,6 +103,10 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
     return bank_data_filtered
 
 
+#
+#   This function takes a query string of a Yes/No question and returns a Boolean Tue/False. 
+#   
+
 def ask_yes_no_question(question_text):
     
     valid_answers = ["Y","y", "N", "n","Yes","No"]
@@ -130,18 +134,20 @@ def save_qualifying_loans(qualifying_loans):
         return
    
 
+    # Asking whether user wants to save the output
     if(ask_yes_no_question(f"\nThere were {len(qualifying_loans)} found. Do you want to save them to a CSV file? (Y/N)""}")):
+
         savepath = questionary.text("Please enter the the desired output file name: ", validate=lambda text: True if text.endswith(".csv") else False).ask()
-        save_csv(savepath, qualifying_loans)
-        #print(qualifying_loans)
+        
+        #Saves Output to filename and includes header info
+
+        save_csv(savepath, qualifying_loans, ["Lender","Max Loan Amount","Max LTV","Max DTI","Min Credit Score","Interest Rate"])
+        
+        print("Qualifying loans saved to {savepath} -- Program Exiting")
+        
         return
     
     
-
-
-    # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
-
 
 
 def run():

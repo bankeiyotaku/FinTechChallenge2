@@ -7,13 +7,13 @@ This contains a helper function for loading and saving CSV files.
 import csv
 
 
-def save_csv(csvpath, data_set):
+def save_csv(csvpath, data_set, file_header):
 
  
     """Writes the CSV file from path provided.
 
     Args:
-        csvpath (Path): The csv file path,  List of lists to write
+        csvpath (Path): The csv file path,  List of lists to write, CSV header
 
    
     """
@@ -21,10 +21,10 @@ def save_csv(csvpath, data_set):
         csvwriter = csv.writer(csvfile)
 
 
-        file_header = ["Lender","Max Loan Amount","Max LTV","Max DTI","Min Credit Score","Interest Rate"]
         # write header
         csvwriter.writerow( file_header )
         
+        # write individual rows 
         for loan in data_set:
           csvwriter.writerow( loan)
 
