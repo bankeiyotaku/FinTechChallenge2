@@ -1,0 +1,50 @@
+  162  cs ..
+  163  ls
+  164  ls
+  165  cd ..
+  166  ls
+  167  app.py
+  168  python3 app.py
+  169  python3 app.py
+  170  ls
+  171  more output
+  172  ls
+  173  ls
+  174  python app.py 
+  175  python3 app.py 
+  176* 
+  177  python3 app.py 
+  178  python3 app.py 
+  179  python3 app.py 
+  180  python3 app.py 
+  181  python3 app.py 
+  182  more output.csv
+  183  ls
+  184  excel
+  185  finder .
+  186  find .
+  187  open .
+  188  ls
+  189  git stsatus
+  190  pwd
+  191  git status
+  192  cs commit -m "attempt #1"
+  193  git commit -m "attempt #1"
+  194  git push main origin
+  195  git push origin
+  196  git remote push origin
+  197  git remote
+  198  python3 remote -V
+  199  python3 remote -v
+  200  git remote -v
+  201  git push origin main
+  202  git status
+  203  git add app.py qualifier/utils/*
+  204  git commit -m "first attempt"
+  205  git push origin main
+  206  pwd
+  207  touch .gitignore
+  208  git add .gitignore
+  209  git commit -m "added gitignore file"
+  210  history
+  211  history 50 > terminal_history.txt
