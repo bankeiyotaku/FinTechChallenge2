@@ -8,18 +8,19 @@ that match a specific borrowers qualifications.  The loans that qualify are outp
 ## Technologies
 
 The project uses Python 3 and the following libraries/modules: sys, fire, questionary, Path, csv
+
 ---
 
 ## Installation Guide
 
 Project can be cloned from github - git@github.com:bankeiyotaku/FinTechChallenge1.git
+
 ---
 
 ## Usage
 
 The app can be run from the command line (python3 app.py) -- the program will request a file with the list of potential loans.
 A sample list is included in data/daily_rate_sheet.csv
-
 
 ---
 
